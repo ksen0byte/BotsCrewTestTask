@@ -149,10 +149,12 @@ public class Application implements CommandLineRunner {
      */
     private void printAllBooks() {
         List<Book> allBooks = bookService.getAllBooks();
-        allBooks.sort(Comparator.comparing(Book::getName));
-        allBooks.forEach(System.out::println);
-        if (allBooks.isEmpty())
+        if (allBooks.isEmpty()) {
             System.out.println("Nothing in here!");
+        } else {
+            allBooks.sort(Comparator.comparing(Book::getName));
+            allBooks.forEach(System.out::println);
+        }
     }
 
 }
