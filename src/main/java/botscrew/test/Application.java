@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -148,6 +149,7 @@ public class Application implements CommandLineRunner {
      */
     private void printAllBooks() {
         List<Book> allBooks = bookService.getAllBooks();
+        allBooks.sort(Comparator.comparing(Book::getName));
         allBooks.forEach(System.out::println);
         if (allBooks.isEmpty())
             System.out.println("Nothing in here!");
